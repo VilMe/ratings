@@ -50,6 +50,30 @@ def register_process():
 
     return redirect("/")
 
+@app.route("/login", methods = ["GET"])
+def login_form():
+	"""Render login form"""
+
+	return render_template("login_form.html")
+
+@app.route("/login-check", methods = ["GET"])
+def login_check():
+	"""Check user's input. If email matches password in database, store user in session."""
+
+	email = request.args.get("email")
+	password = request.args.get("password")
+	user = User.query.filter(User.email == email).first()
+
+	if user.email == email and user.password == password:
+		session["user_id"]= user.user_id
+		flash("Logged in!")
+		return redirect ("/")
+	else:
+		flash("Please try again.")
+
+		return redirect("/login")
+
+
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension

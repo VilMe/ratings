@@ -2,8 +2,21 @@
 <html>
 <head>
 	<title>Ratings</title>
+
 </head>
 <body>
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+			{{message}}
+
+	{% endfor %}
+	{% endif %}
+	{% endwith %}
+
+	
+   <br>
 	Ratings
 	<hr>
 	{% block content %} put content here {% endblock %}
