@@ -47,7 +47,7 @@ def register_process():
 
     db.session.add(new_user)
     db.session.commit()
-
+    flash("Registered!")
     return redirect("/")
 
 @app.route("/login", methods = ["GET"])
@@ -72,6 +72,22 @@ def login_check():
 		flash("Please try again.")
 
 		return redirect("/login")
+
+@app.route("/user/:user_id")
+def go_to_userpage(user_id):
+    """Render user page when link is clicked in user_list route"""
+    user - User.query.filter(User.user_id == user_id).one()
+    age = user.age
+    zicode = user.zipcode
+    
+    return render_template("user_page.html", user_id = user_id)
+
+@app.route("/logout")
+def logout():
+	"""Logout user by clearing session """
+	if session:
+		session.clear()
+		return redirect("/")
 
 
 if __name__ == "__main__":
