@@ -80,7 +80,11 @@ def go_to_userpage(user_id):
     age = user.age
     zicode = user.zipcode
     
-    return render_template("user_page.html", user_id = user_id)
+
+    return render_template("user_page.html", user = user_id,
+                            age = age,
+                            zipcode = zipcode
+                            )
 
 @app.route("/logout")
 def logout():
