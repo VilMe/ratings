@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="static/styles.css">
 	<title>Ratings</title>
-
+	<form align="right" name="logout-btn" method="GET" action="/logout">
+	  <label class="logoutLblPos">
+	  <input name="submit2" type="submit" id="submit2" value="Log Out">
+	  </label>
+	</form>
 </head>
 <body>
 
@@ -17,7 +22,7 @@
 
 	
    <br>
-	Ratings
+	<div id="header">Ratings</div>
 	<hr>
 	{% block content %} put content here {% endblock %}
 

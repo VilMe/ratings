@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<h2>{{title}}</h2>
+
+		<form action = "/movie/{{movie_id}}" method = "POST">
+		Enter a rating for this movie:
+		<input type = "text" name="user-rating"><br>
+		<input type = "submit" name="submit"><br>
+
+		Ratings:<br>
+		{% for rating in ratings %}
+		 {{rating.score}}, 
+		{% endfor %}
+	</ul>
+
+{% endblock %}
